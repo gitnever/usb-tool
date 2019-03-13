@@ -1,0 +1,10 @@
+c:\users\justnever\source\repos\USB-Tool\USB-Tool\bin\Debug\USB-Tool.exe.config
+c:\users\justnever\source\repos\USB-Tool\USB-Tool\bin\Debug\USB-Tool.exe
+c:\users\justnever\source\repos\USB-Tool\USB-Tool\bin\Debug\USB-Tool.pdb
+c:\users\justnever\source\repos\USB-Tool\USB-Tool\obj\Debug\USB-Tool.csprojAssemblyReference.cache
+c:\users\justnever\source\repos\USB-Tool\USB-Tool\obj\Debug\USB_Tool.USBTool.resources
+c:\users\justnever\source\repos\USB-Tool\USB-Tool\obj\Debug\USB_Tool.Properties.Resources.resources
+c:\users\justnever\source\repos\USB-Tool\USB-Tool\obj\Debug\USB-Tool.csproj.GenerateResource.cache
+c:\users\justnever\source\repos\USB-Tool\USB-Tool\obj\Debug\USB-Tool.csproj.CoreCompileInputs.cache
+c:\users\justnever\source\repos\USB-Tool\USB-Tool\obj\Debug\USB-Tool.exe
+c:\users\justnever\source\repos\USB-Tool\USB-Tool\obj\Debug\USB-Tool.pdb
