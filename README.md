@@ -8,4 +8,4 @@ Build pour Windows (32 & 64 bits) : https://www.mediafire.com/file/3zpfb773p5p51
 
 # Patchs Notes
 
-*1.0* : Release
+**1.0** : Release
