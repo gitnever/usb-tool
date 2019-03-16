@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace USB_Tool.Properties
+namespace USBTool.Properties
 {
 
 

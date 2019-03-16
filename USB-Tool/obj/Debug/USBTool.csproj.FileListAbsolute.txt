@@ -1,0 +1,10 @@
+C:\Users\JustNever\Documents\Visual Studio 2019\Projects\USBTool\bin\Debug\USBTool.exe.config
+C:\Users\JustNever\Documents\Visual Studio 2019\Projects\USBTool\bin\Debug\USBTool.exe
+C:\Users\JustNever\Documents\Visual Studio 2019\Projects\USBTool\bin\Debug\USBTool.pdb
+C:\Users\JustNever\Documents\Visual Studio 2019\Projects\USBTool\obj\Debug\USBTool.csprojAssemblyReference.cache
+C:\Users\JustNever\Documents\Visual Studio 2019\Projects\USBTool\obj\Debug\USBTool.Properties.Resources.resources
+C:\Users\JustNever\Documents\Visual Studio 2019\Projects\USBTool\obj\Debug\USBTool.csproj.GenerateResource.cache
+C:\Users\JustNever\Documents\Visual Studio 2019\Projects\USBTool\obj\Debug\USBTool.csproj.CoreCompileInputs.cache
+C:\Users\JustNever\Documents\Visual Studio 2019\Projects\USBTool\obj\Debug\USBTool.exe
+C:\Users\JustNever\Documents\Visual Studio 2019\Projects\USBTool\obj\Debug\USBTool.pdb
+C:\Users\JustNever\Documents\Visual Studio 2019\Projects\USBTool\obj\Debug\USBTool.AppForm.resources

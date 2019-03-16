@@ -9,50 +9,122 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Management;
 
-namespace USB_Tool
+namespace USBTool
 {
-    public partial class USBTool : Form
+    public partial class AppForm : Form
     {
 
-        private bool isRuning;
+        private bool isMoving = false;
+
+        private int moveX;
+        private int moveY;
+
         private DriveInfo selectedDrive;
 
-        public USBTool()
+        private string isoPath = "";
+
+        public AppForm()
         {
             InitializeComponent();
         }
 
-        private void USBTool_Load(object sender, EventArgs e)
+        private void AppForm_Load(object sender, EventArgs e)
         {
-            isRuning = false;
-            foreach (DriveInfo drive in DriveInfo.GetDrives())
+            foreach(DriveInfo drive in DriveInfo.GetDrives())
             {
-                if (drive.DriveType == DriveType.Removable)
+                if(drive.DriveType == DriveType.Removable)
                 {
                     if(drive.IsReady)
                     {
-                        // MessageBox.Show(drive.RootDirectory.ToString().Substring(0, 1));
-                        comboBox1.Items.Add(drive.RootDirectory.ToString().Substring(0, 1) + ":\\ -" + " " + drive.VolumeLabel);
+                        DriveList.Items.Add(drive.RootDirectory.ToString().Substring(0, 1) + ":\\ - " + drive.VolumeLabel);
                     }
                 }
             }
-            comboBox2.SelectedIndex = 0;
-            comboBox1.SelectedIndex = 0;
+            DriveList.SelectedIndex = 0;
+            FileSystemSelection.SelectedIndex = 0;
         }
 
-        public static bool FormatUSB(char driveLetter, string name= "USB", string system = "NTFS", bool speed = true, bool enableCompression = false, int? cluterSize = null)
+        #region Top Buttons
+
+        private void CloseAppButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void MiniAppButton_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        #endregion
+
+        #region Move App
+
+        private void TopPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            isMoving = true;
+            moveX = e.X;
+            moveY = e.Y;
+        }
+
+        private void TopPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isMoving)
+            {
+                this.SetDesktopLocation(MousePosition.X - moveX, MousePosition.Y - moveY);
+                Cursor.Current = Cursors.SizeAll;
+            }
+            else
+            {
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
+        private void TopPanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            isMoving = false;
+        }
+
+        #endregion
+
+        private void DriveList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DriveList.SelectedIndex != 0)
+            {
+                var letter = DriveList.Text[0];
+                foreach (DriveInfo drive in DriveInfo.GetDrives())
+                {
+                    if (drive.DriveType == DriveType.Removable)
+                    {
+                        if (drive.IsReady)
+                        {
+                            if (drive.RootDirectory.ToString().Substring(0, 1) == letter.ToString())
+                            {
+                                selectedDrive = drive;
+                            }
+                        }
+                    }
+                }
+                textBox1.Text = selectedDrive.VolumeLabel;
+
+                return;
+            }
+            textBox1.Text = "...";
+        }
+
+        public static bool FormatUSB(char driveLetter, string name = "USB", string system = "NTFS", bool speed = true, bool enableCompression = false, int? cluterSize = null)
         {
             bool success = false;
 
-            if(!Char.IsLetter(driveLetter))
+            if (!Char.IsLetter(driveLetter))
             {
                 return false;
             }
 
             string drive = driveLetter + ":";
-            try {
+            try
+            {
                 var driveInfo = new DriveInfo(drive);
                 var processStartInfo = new ProcessStartInfo();
                 processStartInfo.FileName = "format.com";
@@ -74,7 +146,8 @@ namespace USB_Tool
                 swStandardInput.WriteLine();
                 formatProcess.WaitForExit();
                 success = true;
-            }catch(Exception)
+            }
+            catch (Exception)
             {
                 // ERREUR
             }
@@ -82,55 +155,53 @@ namespace USB_Tool
             return success;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void ButtonStart_Click(object sender, EventArgs e)
         {
-            bool ok = FormatUSB(Char.Parse(selectedDrive.RootDirectory.ToString().Substring(0, 1)), textBox2.Text, comboBox2.Text, checkBox1.Checked, false, null);
-            if(ok)
+            bool success = FormatUSB(Char.Parse(selectedDrive.RootDirectory.ToString().Substring(0, 1)), textBox1.Text, FileSystemSelection.Text, UseSpeedFormatage.Checked, false, null);
+            if(success)
             {
-                MessageBox.Show("Formatage terminé !");
-            } else
+                if(WriteIsoFile.Checked)
+                {
+                    if(isoPath.Length >= 5)
+                    {
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("Formatage terminé. Une erreur s'est produite lors de la gravure de l'image disque.");
+                    }
+                }
+            }
+            else
             {
                 MessageBox.Show("Une erreur est survenue !");
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void BrowseForIso_Click(object sender, EventArgs e)
         {
-            if(!isRuning)
-            {
-                Application.Exit();
-            } else
-            {
-                MessageBox.Show("Erreur, une opération est en cours ! Veuillez patienter...");
-            }
-        }
+            var fileContent = string.Empty;
+            var filePath = string.Empty;
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBox1.SelectedIndex != 0)
+            using (OpenFileDialog openFile = new OpenFileDialog())
             {
-                var letter = comboBox1.Text[0];
-                foreach (DriveInfo drive in DriveInfo.GetDrives())
+                openFile.InitialDirectory = Environment.SpecialFolder.MyDocuments.ToString();
+                openFile.Filter = "Images Disque (*.iso)|*.iso";
+                openFile.FilterIndex = 2;
+                openFile.RestoreDirectory = true;
+
+                if(openFile.ShowDialog() == DialogResult.OK)
                 {
-                    if (drive.DriveType == DriveType.Removable)
-                    {
-                        if (drive.IsReady)
-                        {
-                            if(drive.RootDirectory.ToString().Substring(0, 1) == letter.ToString())
-                            {
-                                selectedDrive = drive;
-                            }
-                        }
-                    }
+
+                    filePath = openFile.FileName;
+
+                    isoPath = filePath;
+
+                    label5.Text = openFile.SafeFileName;
+
                 }
-
-                textBox1.Text = (selectedDrive.TotalFreeSpace / 1000000000) + " Go(s) libres sur " + (selectedDrive.TotalSize / 1000000000) + " Go(s).";
-                textBox2.Text = selectedDrive.VolumeLabel;
-
-                return;
             }
-            textBox1.Text = "...";
-            textBox2.Text = "...";
+
         }
     }
 

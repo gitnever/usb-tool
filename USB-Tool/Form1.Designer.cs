@@ -1,6 +1,6 @@
-﻿namespace USB_Tool
+﻿namespace USBTool
 {
-    partial class USBTool
+    partial class AppForm
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -28,172 +28,242 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(USBTool));
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppForm));
+            this.TopPanel = new System.Windows.Forms.Panel();
+            this.CloseAppButton = new System.Windows.Forms.Button();
+            this.MiniAppButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.FileSystemSelection = new System.Windows.Forms.ComboBox();
+            this.DriveList = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.OptionsGroupBox = new System.Windows.Forms.GroupBox();
+            this.UseSpeedFormatage = new System.Windows.Forms.CheckBox();
+            this.ButtonStart = new System.Windows.Forms.Button();
+            this.WriteIsoFile = new System.Windows.Forms.CheckBox();
+            this.BrowseForIso = new System.Windows.Forms.Button();
+            this.AppNotify = new System.Windows.Forms.NotifyIcon(this.components);
+            this.label5 = new System.Windows.Forms.Label();
+            this.TopPanel.SuspendLayout();
+            this.OptionsGroupBox.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // TopPanel
+            // 
+            this.TopPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(16)))));
+            this.TopPanel.Controls.Add(this.label1);
+            this.TopPanel.Controls.Add(this.MiniAppButton);
+            this.TopPanel.Controls.Add(this.CloseAppButton);
+            this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TopPanel.Location = new System.Drawing.Point(0, 0);
+            this.TopPanel.Name = "TopPanel";
+            this.TopPanel.Size = new System.Drawing.Size(294, 30);
+            this.TopPanel.TabIndex = 0;
+            this.TopPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopPanel_MouseDown);
+            this.TopPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopPanel_MouseMove);
+            this.TopPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TopPanel_MouseUp);
+            // 
+            // CloseAppButton
+            // 
+            this.CloseAppButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CloseAppButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.CloseAppButton.Location = new System.Drawing.Point(265, 1);
+            this.CloseAppButton.Name = "CloseAppButton";
+            this.CloseAppButton.Size = new System.Drawing.Size(26, 26);
+            this.CloseAppButton.TabIndex = 0;
+            this.CloseAppButton.UseVisualStyleBackColor = true;
+            this.CloseAppButton.Click += new System.EventHandler(this.CloseAppButton_Click);
+            // 
+            // MiniAppButton
+            // 
+            this.MiniAppButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MiniAppButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(156)))), ((int)(((byte)(18)))));
+            this.MiniAppButton.Location = new System.Drawing.Point(236, 1);
+            this.MiniAppButton.Name = "MiniAppButton";
+            this.MiniAppButton.Size = new System.Drawing.Size(26, 26);
+            this.MiniAppButton.TabIndex = 1;
+            this.MiniAppButton.UseVisualStyleBackColor = true;
+            this.MiniAppButton.Click += new System.EventHandler(this.MiniAppButton_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 9);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Lecteur";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "-- Aucune --"});
-            this.comboBox1.Location = new System.Drawing.Point(10, 26);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(252, 21);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.label1.Size = new System.Drawing.Size(88, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Drive Tools 1.0.1";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 50);
+            this.label2.Location = new System.Drawing.Point(12, 42);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Capacité";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(10, 67);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(252, 20);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "4 Go";
+            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Lecteur";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 90);
+            this.label3.Location = new System.Drawing.Point(12, 94);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 13);
-            this.label3.TabIndex = 5;
+            this.label3.TabIndex = 3;
             this.label3.Text = "Système de fichier";
             // 
-            // comboBox2
+            // FileSystemSelection
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.FileSystemSelection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
+            this.FileSystemSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FileSystemSelection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FileSystemSelection.ForeColor = System.Drawing.SystemColors.Control;
+            this.FileSystemSelection.FormattingEnabled = true;
+            this.FileSystemSelection.Items.AddRange(new object[] {
             "NTFS",
             "FAT",
-            "FAT32 (par défaut)",
+            "FAT32",
             "exFAT"});
-            this.comboBox2.Location = new System.Drawing.Point(10, 106);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(252, 21);
-            this.comboBox2.TabIndex = 6;
+            this.FileSystemSelection.Location = new System.Drawing.Point(12, 110);
+            this.FileSystemSelection.Name = "FileSystemSelection";
+            this.FileSystemSelection.Size = new System.Drawing.Size(268, 21);
+            this.FileSystemSelection.TabIndex = 4;
+            // 
+            // DriveList
+            // 
+            this.DriveList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
+            this.DriveList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DriveList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DriveList.ForeColor = System.Drawing.SystemColors.Control;
+            this.DriveList.FormattingEnabled = true;
+            this.DriveList.Items.AddRange(new object[] {
+            "..."});
+            this.DriveList.Location = new System.Drawing.Point(12, 58);
+            this.DriveList.Name = "DriveList";
+            this.DriveList.Size = new System.Drawing.Size(268, 21);
+            this.DriveList.TabIndex = 5;
+            this.DriveList.SelectedIndexChanged += new System.EventHandler(this.DriveList_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 130);
+            this.label4.Location = new System.Drawing.Point(12, 146);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 13);
-            this.label4.TabIndex = 7;
+            this.label4.TabIndex = 6;
             this.label4.Text = "Nom du volume";
             // 
-            // textBox2
+            // textBox1
             // 
-            this.textBox2.Location = new System.Drawing.Point(10, 146);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(252, 20);
-            this.textBox2.TabIndex = 8;
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.textBox1.ForeColor = System.Drawing.SystemColors.Control;
+            this.textBox1.Location = new System.Drawing.Point(12, 163);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(268, 20);
+            this.textBox1.TabIndex = 7;
             // 
-            // groupBox1
+            // OptionsGroupBox
             // 
-            this.groupBox1.Controls.Add(this.checkBox1);
-            this.groupBox1.Location = new System.Drawing.Point(10, 173);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(249, 46);
-            this.groupBox1.TabIndex = 9;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Options";
+            this.OptionsGroupBox.BackColor = System.Drawing.Color.Transparent;
+            this.OptionsGroupBox.Controls.Add(this.label5);
+            this.OptionsGroupBox.Controls.Add(this.BrowseForIso);
+            this.OptionsGroupBox.Controls.Add(this.WriteIsoFile);
+            this.OptionsGroupBox.Controls.Add(this.UseSpeedFormatage);
+            this.OptionsGroupBox.ForeColor = System.Drawing.SystemColors.Control;
+            this.OptionsGroupBox.Location = new System.Drawing.Point(12, 198);
+            this.OptionsGroupBox.Name = "OptionsGroupBox";
+            this.OptionsGroupBox.Size = new System.Drawing.Size(268, 68);
+            this.OptionsGroupBox.TabIndex = 8;
+            this.OptionsGroupBox.TabStop = false;
+            this.OptionsGroupBox.Text = "Options";
             // 
-            // checkBox1
+            // UseSpeedFormatage
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(7, 20);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(108, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Formatage rapide";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.UseSpeedFormatage.AutoSize = true;
+            this.UseSpeedFormatage.Location = new System.Drawing.Point(8, 19);
+            this.UseSpeedFormatage.Name = "UseSpeedFormatage";
+            this.UseSpeedFormatage.Size = new System.Drawing.Size(108, 17);
+            this.UseSpeedFormatage.TabIndex = 0;
+            this.UseSpeedFormatage.Text = "Formatage rapide";
+            this.UseSpeedFormatage.UseVisualStyleBackColor = true;
             // 
-            // progressBar1
+            // ButtonStart
             // 
-            this.progressBar1.Location = new System.Drawing.Point(10, 226);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(249, 12);
-            this.progressBar1.TabIndex = 10;
+            this.ButtonStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonStart.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.ButtonStart.Location = new System.Drawing.Point(205, 304);
+            this.ButtonStart.Name = "ButtonStart";
+            this.ButtonStart.Size = new System.Drawing.Size(75, 23);
+            this.ButtonStart.TabIndex = 9;
+            this.ButtonStart.Text = "Démarrer";
+            this.ButtonStart.UseVisualStyleBackColor = true;
+            this.ButtonStart.Click += new System.EventHandler(this.ButtonStart_Click);
             // 
-            // button1
+            // WriteIsoFile
             // 
-            this.button1.Location = new System.Drawing.Point(187, 266);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Fermer";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.WriteIsoFile.AutoSize = true;
+            this.WriteIsoFile.Location = new System.Drawing.Point(8, 42);
+            this.WriteIsoFile.Name = "WriteIsoFile";
+            this.WriteIsoFile.Size = new System.Drawing.Size(94, 17);
+            this.WriteIsoFile.TabIndex = 1;
+            this.WriteIsoFile.Text = "Graver un ISO";
+            this.WriteIsoFile.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // BrowseForIso
             // 
-            this.button2.Location = new System.Drawing.Point(106, 266);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Démarrer";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.BrowseForIso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BrowseForIso.Location = new System.Drawing.Point(102, 39);
+            this.BrowseForIso.Name = "BrowseForIso";
+            this.BrowseForIso.Size = new System.Drawing.Size(31, 21);
+            this.BrowseForIso.TabIndex = 2;
+            this.BrowseForIso.Text = "...";
+            this.BrowseForIso.UseVisualStyleBackColor = true;
+            this.BrowseForIso.Click += new System.EventHandler(this.BrowseForIso_Click);
             // 
-            // USBTool
+            // AppNotify
+            // 
+            this.AppNotify.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Error;
+            this.AppNotify.Icon = ((System.Drawing.Icon)(resources.GetObject("AppNotify.Icon")));
+            this.AppNotify.Text = "Drive Tools";
+            this.AppNotify.Visible = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(139, 43);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(0, 13);
+            this.label5.TabIndex = 3;
+            // 
+            // AppForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(271, 295);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.label3);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.ClientSize = new System.Drawing.Size(294, 336);
+            this.Controls.Add(this.ButtonStart);
+            this.Controls.Add(this.OptionsGroupBox);
             this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.DriveList);
+            this.Controls.Add(this.FileSystemSelection);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.TopPanel);
+            this.ForeColor = System.Drawing.SystemColors.Control;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "USBTool";
+            this.Name = "AppForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "USB Tool";
-            this.Load += new System.EventHandler(this.USBTool_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.Text = "Drive Tools";
+            this.Load += new System.EventHandler(this.AppForm_Load);
+            this.TopPanel.ResumeLayout(false);
+            this.TopPanel.PerformLayout();
+            this.OptionsGroupBox.ResumeLayout(false);
+            this.OptionsGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,19 +271,23 @@
 
         #endregion
 
+        private System.Windows.Forms.Panel TopPanel;
+        private System.Windows.Forms.Button CloseAppButton;
+        private System.Windows.Forms.Button MiniAppButton;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox FileSystemSelection;
+        private System.Windows.Forms.ComboBox DriveList;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.GroupBox OptionsGroupBox;
+        private System.Windows.Forms.CheckBox UseSpeedFormatage;
+        private System.Windows.Forms.Button ButtonStart;
+        private System.Windows.Forms.Button BrowseForIso;
+        private System.Windows.Forms.CheckBox WriteIsoFile;
+        private System.Windows.Forms.NotifyIcon AppNotify;
+        private System.Windows.Forms.Label label5;
     }
 }
 

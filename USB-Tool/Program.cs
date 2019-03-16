@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace USB_Tool
+namespace USBTool
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace USB_Tool
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new USBTool());
+            Application.Run(new AppForm());
         }
     }
 }
